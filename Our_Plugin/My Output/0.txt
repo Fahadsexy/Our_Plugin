@@ -1,0 +1,93 @@
+SCCID is 0
+File Number: 0
+File Name: D:\javasrc\java\nio\ByteBufferAsCharBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 42
+Starting Column: 5
+Ending line is 57
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    ByteBufferAsCharBufferB(ByteBuffer bb) {   // package-private
+
+        super(-1, 0,
+              bb.remaining() >> 1,
+              bb.remaining() >> 1);
+        this.bb = bb;
+        // enforce limit == capacity
+        int cap = this.capacity();
+        this.limit(cap);
+        int pos = this.position();
+        assert (pos <= cap);
+        offset = pos;
+
+
+
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+
+SCCID is 0
+File Number: 1
+File Name: D:\javasrc\java\nio\ByteBufferAsFloatBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 42
+Starting Column: 5
+Ending line is 57
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    ByteBufferAsFloatBufferB(ByteBuffer bb) {   // package-private
+
+        super(-1, 0,
+              bb.remaining() >> 2,
+              bb.remaining() >> 2);
+        this.bb = bb;
+        // enforce limit == capacity
+        int cap = this.capacity();
+        this.limit(cap);
+        int pos = this.position();
+        assert (pos <= cap);
+        offset = pos;
+
+
+
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+
+SCCID is 0
+File Number: 2
+File Name: D:\javasrc\java\nio\ByteBufferAsIntBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 42
+Starting Column: 5
+Ending line is 57
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    ByteBufferAsIntBufferB(ByteBuffer bb) {   // package-private
+
+        super(-1, 0,
+              bb.remaining() >> 2,
+              bb.remaining() >> 2);
+        this.bb = bb;
+        // enforce limit == capacity
+        int cap = this.capacity();
+        this.limit(cap);
+        int pos = this.position();
+        assert (pos <= cap);
+        offset = pos;
+
+
+
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+

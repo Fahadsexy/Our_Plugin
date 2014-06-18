@@ -1,0 +1,103 @@
+Changes regarding VCL_1.1.3:
+	- Strings like "aaa" in the textual context are not considered as String-Expressions. See in syntax description.
+	- new VCL processor functions: (See in syntax description.)
+		- $ulcap(<Var>) – Upper-Leading cap: changes <Var’s> first character to upper case
+		- $llcap(<Var>) – Lower-Leading cap: changes <Var’s> first character to lower case
+			Usage example:
+			
+			input:
+				#set task = "task"
+				?$ulcap(task)? ?$llcap(task)? = new ?$ulcap(task)?();
+			output: 
+				Task task = new Task();
+
+		- BugFixes and testing 'middle scoping':
+			- When variables or insertions or outputs defined inside an extended #adapt command we are creating a scoping level between the the current file and the new file.
+		      variables, insertions and outputs defined here, won't override the current files same variables, insertions and outputs (lower scope), but can't be overriden by
+		      the the same variables, insertions and outputs (higher scope).
+			- Output command is working like described here: http://vcl.comp.nus.edu.sg/?q=output 
+			  "Once #output f has been executed, all subsequently emitted text is placed in file f, until the next #output overrides f with another file name."
+			  Output scoping is different than variable and insertion scoping.
+			  Added: When a 'middle-scope' ends, the output command will be set back to the last relevant #output command.
+			  Example:
+			
+			 input:
+				#output "out1.txt"
+				#message output is: ?$outfile?
+				#adapt: "file2.vcl"
+				  #output "out2.txt"
+				#endadapt
+				#message output is in the end: ?$outfile?
+			    
+			 file2.vcl:
+				#message output is in file2.vcl: ?$outfile?
+				#output "newOuput.txt"
+				#message output is at end of file1.vcl: ?$outfile?
+			 
+			 console: 
+				output is: ...\out1.txt
+				output is in file2.vcl: ...\out2.txt
+				output is at end of file1.vcl: ...\newOuput.txt   // !!! It can be overriden because of rules of output command
+				output is in the end: ...\out1.txt  // !!! Middle scope ended last relevant output set before the adapt
+			  
+Bigger changes regarding to XVCL
+
+- Processing of the #output command:
+	- when an output command is processed, the output will be changed to the given target. The output will remain the same till another output commands doesn't change it.
+	- If a file is chosen as output file, the content of the file will be replaced.
+	- If a file is opened again in the same processing flow, the content will be appended to the file's content.
+	- The output command makes the path (folders/file) if that doesn't exist.
+	- If the output is not specified a file "defaultOutput" will appear in the processor's folder.
+	
+- Processing of the #insert commands:
+	- Insert commands can be used inside any command or individually, it doesn't have to be nested. (In XVCL insert commands just in adapt). The scoping rules for inserts is the same as for variables.
+	- If we have an insert command in the same adapt command's body, the second insert will override the first one. (In XVCL in this case the inserts were concatenated)
+	
+- Variables and expressions:
+	- String expressions and arithmetic expressions can't be intermixed like in XVCL (i.e. : ?@@a@b + 2?)
+		We can use variables in arithmetic expressions by simple reference. (i.e. : ?a + b * 4?)
+		If we need something like 
+			?@@a@b + 2? 
+		we can use:
+			#set z = ?@@a@b?
+			?z+2?
+	
+- CPP commands:
+	- If any command is not recognized by VCL, the command will be in the output. (i.e: #include, #define,... commands)
+	
+- SetLoop:
+	- in setloop the break's support just #var commands in #vars-#endvars section
+	  and just #iter commands in the #iter section. Other content doesn't make sense in these parts to be inserted, so it will report error.
+	 
+- Comment:
+	- comments in VCL files are staring with '%' character (till end of line)
+
+- Special characters:
+	- VCL special characters will be in the output if escaped i.e.: \% \?
+
+-----------------------------------------------------------------------------------------------
+	
+Remark: From VCL 1.1.4 string-expressions  are not going to be evaluated in the text content.
+
+i.e. 
+	input:
+	#set A = 5
+		"t1"?@A?"t2"
+	output: 
+	"t1"5"t2" // before VCL 1.1.4 -> t15t2 
+
+We found that, the string-expressions in the textual content are never
+or very rarely used. Having string-expressions allowed in textual content however introduced the need
+of escaping every “ double quote character in the text which in programming languages is very frequently present.
+For these reasons, by default in textual content the processor won’t evaluate string expressions in textual content,
+just at definitions and commands which take expressions as input. So we don’t need to escape double quote characters
+in the instrumented code String expressions can be still used in textual content easily. i.e.:
+	
+	input:
+	#set A = 5
+	#set tAt = "t1"?@A?"t2"
+	?@tAt?
+	output: 
+	t15t2
+
+For compatibility reasons, \” (escaped double quote character) will still be accepted and the output will be “ (unescaped double quote character).

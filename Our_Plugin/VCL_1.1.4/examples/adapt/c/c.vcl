@@ -1,0 +1,1 @@
+This is file "c.vcl" adapted by file "a.vcl"

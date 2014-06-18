@@ -1,0 +1,1 @@
+java -jar VCL_1.1.4.jar %1

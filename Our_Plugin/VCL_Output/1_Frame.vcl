@@ -1,0 +1,3 @@
+#output ?@method_0?"Buffer.java"
+
+public ?@variable_0? compact ( ) { int pos = position ( ) ; int lim = limit ( ) ; assert ( pos <= lim ) ; int rem = ( pos <= lim ? lim - pos : 0 ) ; ByteBuffer db = bb.duplicate ( ) ; db.limit ( ix ( lim ) ) ; db.position ( ix ( 0 ) ) ; ByteBuffer sb = db.slice ( ) ; sb.position ( pos << 2 ) ; sb.compact ( ) ; position ( rem ) ; limit ( capacity ( ) ) ; return this ; } 

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Our_Plugin
+Bundle-SymbolicName: Our_Plugin;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: our_plugin.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/mysql-connector-java-5.1.6-bin.jar, .

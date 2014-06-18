@@ -1,0 +1,72 @@
+SCCID is 2
+File Number: 0
+File Name: D:\javasrc\java\nio\ByteBufferAsCharBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 72
+Starting Column: 5
+Ending line is 80
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    public CharBuffer slice() {
+        int pos = this.position();
+        int lim = this.limit();
+        assert (pos <= lim);
+        int rem = (pos <= lim ? lim - pos : 0);
+        int off = (pos << 1) + offset;
+        assert (off >= 0);
+        return new ByteBufferAsCharBufferB(bb, -1, 0, rem, rem, off);
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+
+SCCID is 2
+File Number: 1
+File Name: D:\javasrc\java\nio\ByteBufferAsFloatBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 72
+Starting Column: 5
+Ending line is 80
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    public FloatBuffer slice() {
+        int pos = this.position();
+        int lim = this.limit();
+        assert (pos <= lim);
+        int rem = (pos <= lim ? lim - pos : 0);
+        int off = (pos << 2) + offset;
+        assert (off >= 0);
+        return new ByteBufferAsFloatBufferB(bb, -1, 0, rem, rem, off);
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+
+SCCID is 2
+File Number: 2
+File Name: D:\javasrc\java\nio\ByteBufferAsIntBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 72
+Starting Column: 5
+Ending line is 80
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    public IntBuffer slice() {
+        int pos = this.position();
+        int lim = this.limit();
+        assert (pos <= lim);
+        int rem = (pos <= lim ? lim - pos : 0);
+        int off = (pos << 2) + offset;
+        assert (off >= 0);
+        return new ByteBufferAsIntBufferB(bb, -1, 0, rem, rem, off);
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+

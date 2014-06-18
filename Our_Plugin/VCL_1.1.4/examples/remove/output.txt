@@ -1,0 +1,7 @@
+firstA
+firstB
+secondA
+firstB
+-- b removed --
+
+secondB

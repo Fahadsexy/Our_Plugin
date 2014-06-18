@@ -1,0 +1,8 @@
+This file "adapt.vcl" It copies files "a.vcl" and "b.vcl"
+
+This is file "a.vcl" copied by file "adapt.vcl"
+
+This is file "c.vcl" adapted by file "a.vcl"
+This is file "b.vcl" being copied by file "adapt.vcl"
+
+I'm file "d.vcl" being copied by file "b.vcl"

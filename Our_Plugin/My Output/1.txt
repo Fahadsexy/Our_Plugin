@@ -1,0 +1,105 @@
+SCCID is 1
+File Number: 0
+File Name: D:\javasrc\java\nio\ByteBufferAsCharBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 138
+Starting Column: 5
+Ending line is 157
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    public CharBuffer compact() {
+
+        int pos = position();
+        int lim = limit();
+        assert (pos <= lim);
+        int rem = (pos <= lim ? lim - pos : 0);
+
+        ByteBuffer db = bb.duplicate();
+        db.limit(ix(lim));
+        db.position(ix(0));
+        ByteBuffer sb = db.slice();
+        sb.position(pos << 1);
+        sb.compact();
+        position(rem);
+        limit(capacity());
+        return this;
+
+
+
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+
+SCCID is 1
+File Number: 1
+File Name: D:\javasrc\java\nio\ByteBufferAsFloatBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 138
+Starting Column: 5
+Ending line is 157
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    public FloatBuffer compact() {
+
+        int pos = position();
+        int lim = limit();
+        assert (pos <= lim);
+        int rem = (pos <= lim ? lim - pos : 0);
+
+        ByteBuffer db = bb.duplicate();
+        db.limit(ix(lim));
+        db.position(ix(0));
+        ByteBuffer sb = db.slice();
+        sb.position(pos << 2);
+        sb.compact();
+        position(rem);
+        limit(capacity());
+        return this;
+
+
+
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+
+SCCID is 1
+File Number: 2
+File Name: D:\javasrc\java\nio\ByteBufferAsIntBufferB.java
+Directory ID: 0
+Directory Name: D:\javasrc\java\nio
+Starting line is 138
+Starting Column: 5
+Ending line is 157
+Ending Column: 5
+**************************CODE STARTS HERE*************************************
+null    public IntBuffer compact() {
+
+        int pos = position();
+        int lim = limit();
+        assert (pos <= lim);
+        int rem = (pos <= lim ? lim - pos : 0);
+
+        ByteBuffer db = bb.duplicate();
+        db.limit(ix(lim));
+        db.position(ix(0));
+        ByteBuffer sb = db.slice();
+        sb.position(pos << 2);
+        sb.compact();
+        position(rem);
+        limit(capacity());
+        return this;
+
+
+
+    }
+
+*************************CODE ENDS HERE****************************************
+
+
+

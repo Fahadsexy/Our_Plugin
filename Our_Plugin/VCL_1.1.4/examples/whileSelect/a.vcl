@@ -1,0 +1,19 @@
+#while loop
+	#select loop
+		#option 1
+			#break: ?@loop?
+replace this text
+			#endbreak
+		#endoption
+		#option 2
+			#break: ?@loop?
+replace this text
+			#endbreak
+		#endoption
+		#option 3
+			#break: ?@loop?
+replace this text
+			#endbreak
+		#endoption
+	#endselect
+#endwhile

@@ -1,0 +1,1 @@
+I am file \"c.vcl\" copied by file \"b.vcl\".

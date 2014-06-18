@@ -1,0 +1,1 @@
+public FloatBuffer slice ( ) { int pos = this.position ( ) ; int lim = this.limit ( ) ; assert ( pos <= lim ) ; int rem = ( pos <= lim 
